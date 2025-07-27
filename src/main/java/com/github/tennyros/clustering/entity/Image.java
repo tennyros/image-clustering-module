@@ -24,4 +24,7 @@ public class Image {
     private Long id;
 
     private String url;
+
+    @Column(length = 128)
+    private String pHash;
 }

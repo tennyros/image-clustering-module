@@ -19,6 +19,9 @@
     <properties>
         <java.version>17</java.version>
         <liquibase.version>4.33.0</liquibase.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
+        <java-dotenv.version>5.2.2</java-dotenv.version>
+        <JImageHash.version>1.0.0</JImageHash.version>
     </properties>
 
     <dependencies>
@@ -38,6 +41,21 @@
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
             <version>${liquibase.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.brachtendorf</groupId>
+            <artifactId>JImageHash</artifactId>
+            <version>${JImageHash.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>22.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
