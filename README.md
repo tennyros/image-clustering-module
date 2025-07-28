@@ -1,9 +1,51 @@
 # Image Clustering Module
 
+![CI Status](https://github.com/tennyros/image-clustering-module/workflows/CI%20Pipeline%20with%20Maven/badge.svg)
+![Coverage](https://github.com/tennyros/image-clustering-module/raw/coverage-badge/.github/badges/jacoco.svg)
 ![Java 17](https://img.shields.io/badge/Java-17-blue)
-![Spring Boot 3.5.4](https://img.shields.io/badge/Spring_Boot-3.5.0-brightgreen)
+![Spring Boot 3.5.4](https://img.shields.io/badge/Spring_Boot-3.5.4-brightgreen)
 
 Модуль для кластеризации схожих изображений по визуальному сходству с использованием perceptual hashing и LSH.
+
+---
+
+## Быстрый старт
+
+### Требования
+
+1. **Java 17+**
+2. **Docker-compose**
+
+### Настройка и запуск в терминале
+
+**1. Клонируйте репозиторий:**
+
+```bash
+git clone https://github.com/tennyros/image-clustering-module.git
+cd image-clustering-module
+```
+
+**2. Подготовьте файлы репозитория:**
+
+```bash
+# Переименуйте env.sample файлы
+cp .env.sample .env
+```
+
+**3. Запустите PostgreSQL через docker compose:**
+
+```bash
+# Убедитесь, что порты на Вашей системе, указанные в docker-compose, не заняты и запустите
+docker-compose up -d
+```
+
+**4. Запустите приложение:**
+
+```bash
+./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
+```
+
+---
 
 ## Описание алгоритма кластеризации изображений
 
@@ -95,39 +137,3 @@
 **Без LSH (наивный перебор)**: `O(N^2)`
 
 ---
-
-## Старт приложения
-
-### Требования
-
-1. **Java 17+**
-2. **Docker-compose**
-
-### Настройка и запуск в терминале
-
-**1. Клонируйте репозиторий:**
-
-```bash
-git clone https://github.com/tennyros/image-clustering-module.git
-cd image-clustering-module
-```
-
-**2. Подготовьте файлы репозитория:**
-
-```bash
-# Переименуйте env.sample файлы
-cp .env.sample .env
-```
-
-**3. Запустите PostgreSQL через docker compose:**
-
-```bash
-# Убедитесь, что порты на Вашей системе, указанные в docker-compose, не заняты и запустите
-docker-compose up -d
-```
-
-**4. Запустите приложение:**
-
-```bash
-./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
-```
