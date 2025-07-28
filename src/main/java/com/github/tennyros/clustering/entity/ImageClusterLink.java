@@ -1,6 +1,7 @@
 package com.github.tennyros.clustering.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,11 +29,11 @@ public class ImageClusterLink {
     @SequenceGenerator(name = "link_seq", sequenceName = "link_seq", allocationSize = 50)
     private Long id;
 
-    @ManyToOne
     @JoinColumn(name = "cluster_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private ImageCluster cluster;
 
-    @ManyToOne
     @JoinColumn(name = "image_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Image image;
 }
