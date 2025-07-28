@@ -1,4 +1,4 @@
-package com.github.tennyros.clustering.service;
+package com.github.tennyros.clustering.service.hash;
 
 import dev.brachtendorf.jimagehash.hashAlgorithms.HashingAlgorithm;
 import dev.brachtendorf.jimagehash.hashAlgorithms.PerceptiveHash;

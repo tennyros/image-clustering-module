@@ -1,6 +1,6 @@
 package com.github.tennyros.clustering;
 
-import com.github.tennyros.clustering.util.DotenvLoader;
+import com.github.tennyros.clustering.config.DotenvLoader;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

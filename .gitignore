@@ -30,3 +30,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### .env ###
+.env
+
+### Liquibase ###
+liquibase.properties

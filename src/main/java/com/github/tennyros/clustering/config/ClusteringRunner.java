@@ -1,8 +1,8 @@
-package com.github.tennyros.clustering.util;
+package com.github.tennyros.clustering.config;
 
 import com.github.tennyros.clustering.dto.ImageClusterDto;
 import com.github.tennyros.clustering.dto.ImageDto;
-import com.github.tennyros.clustering.service.ImageClusterer;
+import com.github.tennyros.clustering.service.clustering.ImageClusterer;
 import com.github.tennyros.clustering.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

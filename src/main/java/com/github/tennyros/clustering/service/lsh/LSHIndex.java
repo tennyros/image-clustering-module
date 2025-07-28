@@ -1,4 +1,4 @@
-package com.github.tennyros.clustering.util;
+package com.github.tennyros.clustering.service.lsh;
 
 import com.github.tennyros.clustering.entity.Image;
 

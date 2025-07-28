@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,7 +26,8 @@ import java.util.List;
 public class ImageCluster {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cluster_seq")
+    @SequenceGenerator(name = "cluster_seq", sequenceName = "cluster_seq", allocationSize = 50)
     private Long id;
 
     private LocalDateTime createdAt = LocalDateTime.now();

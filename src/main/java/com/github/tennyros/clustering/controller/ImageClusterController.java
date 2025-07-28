@@ -1,7 +1,7 @@
 package com.github.tennyros.clustering.controller;
 
 import com.github.tennyros.clustering.dto.ImageClusterDto;
-import com.github.tennyros.clustering.service.ImageClusterer;
+import com.github.tennyros.clustering.service.clustering.ImageClusterer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

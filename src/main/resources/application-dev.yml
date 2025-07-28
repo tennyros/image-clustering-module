@@ -2,7 +2,23 @@ spring:
   config:
     activate:
       on-profile: dev
+
   datasource:
     url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+
+  jpa:
+    properties:
+      hibernate:
+        generate_statistics: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE

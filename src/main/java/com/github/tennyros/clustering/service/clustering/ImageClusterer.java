@@ -1,4 +1,4 @@
-package com.github.tennyros.clustering.service;
+package com.github.tennyros.clustering.service.clustering;
 
 import com.github.tennyros.clustering.dto.ImageClusterDto;
 import org.springframework.data.domain.Page;

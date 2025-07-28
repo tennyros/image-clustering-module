@@ -1,4 +1,4 @@
-package com.github.tennyros.clustering.util;
+package com.github.tennyros.clustering.config;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import lombok.experimental.UtilityClass;
