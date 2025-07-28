@@ -13,7 +13,7 @@ public class TestEntityFactory {
     }
 
     public static Image createImage() {
-        return createImage(1L, "url", "hash");
+        return createImage(1L, "url", "abc123");
     }
 
     public static ImageCluster createCluster() {

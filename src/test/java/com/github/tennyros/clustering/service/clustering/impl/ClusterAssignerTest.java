@@ -50,4 +50,18 @@ class ClusterAssignerTest {
         assertThat(links).hasSize(1);
         assertThat(links.get(0).getImage()).isEqualTo(img);
     }
+
+    @Test
+    @DisplayName("assign should not add link if addClusteredImage returns false")
+    void assign_shouldNotAddLinkIfAddClusteredImageFails() {
+        Image img = createImage();
+        when(ctx.isAlreadyClustered(img.getId())).thenReturn(false);
+        when(matcher.match(eq(img), any())).thenReturn(Optional.empty());
+        when(clusterRepository.save(any())).thenReturn(createCluster());
+        when(ctx.addClusteredImage(any(), any())).thenReturn(false);
+
+        List<ImageClusterLink> links = assigner.assign(List.of(img), ctx);
+
+        assertThat(links).isEmpty();
+    }
 }
