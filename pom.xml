@@ -20,11 +20,13 @@
         <java.version>17</java.version>
         <liquibase.version>4.33.0</liquibase.version>
         <commons-lang3.version>3.18.0</commons-lang3.version>
-        <java-dotenv.version>5.2.2</java-dotenv.version>
         <JImageHash.version>1.0.0</JImageHash.version>
+        <javafx.version>22.0.2</javafx.version>
+        <java-dotenv.version>5.2.2</java-dotenv.version>
     </properties>
 
     <dependencies>
+        <!--    Spring Boot Starters    -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -37,6 +39,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!--    Database    -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
@@ -47,6 +56,8 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+
+        <!--    Clustering Logic    -->
         <dependency>
             <groupId>dev.brachtendorf</groupId>
             <artifactId>JImageHash</artifactId>
@@ -55,13 +66,10 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>22.0.2</version>
+            <version>${javafx.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+
+        <!--    Extra Utils    -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -73,6 +81,7 @@
             <version>${java-dotenv.version}</version>
         </dependency>
 
+        <!--    For Testing    -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

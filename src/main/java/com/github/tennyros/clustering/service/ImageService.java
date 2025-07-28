@@ -12,6 +12,8 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 @Slf4j
@@ -24,26 +26,48 @@ public class ImageService {
 
     @Transactional
     public void addTestImages() {
-        List<String> fileNames = List.of("cat1.jpg", "cat2.jpg", "cat3.png", "cat4.png", "cat5.png");
+        List<String> imageUrls = List.of(
+                "https://raw.githubusercontent.com/tennyros/image-storage/master/image-clusterer-assets/cat1.jpg",
+                "https://raw.githubusercontent.com/tennyros/image-storage/master/image-clusterer-assets/cat2.jpg",
+                "https://raw.githubusercontent.com/tennyros/image-storage/master/image-clusterer-assets/cat3.jpg",
+                "https://raw.githubusercontent.com/tennyros/image-storage/master/image-clusterer-assets/cat4.png",
+                "https://raw.githubusercontent.com/tennyros/image-storage/master/image-clusterer-assets/cat5.png",
+                "https://raw.githubusercontent.com/tennyros/image-storage/master/image-clusterer-assets/cat6.png"
+        );
 
-        for (String fileName : fileNames) {
-            try (InputStream is = getClass().getClassLoader().getResourceAsStream("images/" + fileName)) {
-                if (is == null) {
-                    log.warn("Изображение не найдено: {}", fileName);
-                    continue;
-                }
+        for (String imageUrl : imageUrls) {
+            processAndSaveImage(imageUrl);
+        }
+    }
 
-                BufferedImage image = ImageIO.read(is);
-                String hash = imageHashService.calculateHash(image);
-
-                Image img = new Image();
-                img.setPHash(hash);
-                img.setUrl("images/" + fileName);
-
-                imageRepository.save(img);
-            } catch (IOException e) {
-                log.error("Ошибка при обработке изображения {}: {}", fileName, e.getMessage(), e);
+    private void processAndSaveImage(String imageUrl) {
+        try {
+            BufferedImage image = downloadImage(imageUrl);
+            if (image == null) {
+                log.warn("Не удалось прочитать изображение по ссылке: {}", imageUrl);
+                return;
             }
+
+            String hash = imageHashService.calculateHash(image);
+
+            Image img = new Image();
+            img.setPHash(hash);
+            img.setUrl(imageUrl);
+
+            imageRepository.save(img);
+
+        } catch (IOException e) {
+            log.error("Ошибка при загрузке изображения по URL {}: {}", imageUrl, e.getMessage(), e);
+        }
+    }
+
+    protected BufferedImage downloadImage(String urlStr) throws IOException {
+        URL url = new URL(urlStr);
+        URLConnection connection = url.openConnection();
+        connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+
+        try (InputStream is = connection.getInputStream()) {
+            return ImageIO.read(is);
         }
     }
 }

@@ -39,3 +39,6 @@ liquibase.properties
 
 ### logging ###
 logs
+
+### local project images ###
+images/
