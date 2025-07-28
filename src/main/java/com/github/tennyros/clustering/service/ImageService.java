@@ -25,7 +25,7 @@ public class ImageService {
     private final ImageHashService imageHashService;
 
     @Transactional
-    public void addTestImages() {
+    public void addImages() {
         List<String> imageUrls = List.of(
                 "https://raw.githubusercontent.com/tennyros/image-storage/master/image-clusterer-assets/cat1.jpg",
                 "https://raw.githubusercontent.com/tennyros/image-storage/master/image-clusterer-assets/cat2.jpg",

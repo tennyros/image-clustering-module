@@ -22,7 +22,7 @@ public class ClusteringRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        imageService.addTestImages();
+        imageService.addImages();
         imageClusterer.startClustering();
 
         Pageable pageable = PageRequest.of(0, 100);
