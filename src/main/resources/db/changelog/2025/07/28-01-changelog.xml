@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.33.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1753591855000-1" author="vadim">
+        <createSequence
+                sequenceName="image_seq"
+                startValue="1"
+                incrementBy="50"/>
+        <createSequence
+                sequenceName="cluster_seq"
+                startValue="1"
+                incrementBy="50"/>
+        <createSequence
+                sequenceName="link_seq"
+                startValue="1"
+                incrementBy="50"/>
+    </changeSet>
+    <changeSet id="1753591855000-2" author="vadim">
+        <!-- Нативный SQL используется для сброса identity и явной привязки к sequence -->
+        <sql>
+            ALTER TABLE images ALTER COLUMN id DROP IDENTITY IF EXISTS;
+            ALTER TABLE images ALTER COLUMN id SET DEFAULT nextval('image_seq');
+            ALTER TABLE image_cluster ALTER COLUMN id DROP IDENTITY IF EXISTS;
+            ALTER TABLE image_cluster ALTER COLUMN id SET DEFAULT nextval('cluster_seq');
+            ALTER TABLE image_cluster_link ALTER COLUMN id DROP IDENTITY IF EXISTS;
+            ALTER TABLE image_cluster_link ALTER COLUMN id SET DEFAULT nextval('link_seq');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
