@@ -17,11 +17,7 @@ public class ClusterInitializer {
         for (ImageCluster cluster : clusters) {
             for (ImageClusterLink link : cluster.getLinks()) {
                 Image img = link.getImage();
-                Long id = img.getId();
-                if (img.getPHash() != null && ctx.getClusteredIds().add(id)) {
-                    ctx.getLshIndex().add(img);
-                    ctx.getImageIdToCluster().put(id, cluster);
-                }
+                ctx.addClusteredImage(img, cluster);
             }
         }
     }

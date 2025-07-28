@@ -22,8 +22,7 @@ public class ClusterAssigner {
         List<ImageClusterLink> linksToAdd = new ArrayList<>();
 
         for (Image img : images) {
-            Long id = img.getId();
-            if (ctx.getClusteredIds().contains(id)) {
+            if (ctx.isAlreadyClustered(img.getId())) {
                 continue;
             }
 
@@ -36,10 +35,9 @@ public class ClusterAssigner {
                     .build();
 
             cluster.getLinks().add(link);
-            ctx.getLshIndex().add(img);
-            ctx.getImageIdToCluster().put(id, cluster);
-            ctx.getClusteredIds().add(id);
-            linksToAdd.add(link);
+            if (ctx.addClusteredImage(img, cluster)) {
+                linksToAdd.add(link);
+            }
         }
 
         return linksToAdd;

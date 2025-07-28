@@ -18,14 +18,14 @@ public class ClusterMatcher {
     private final ImageClusterProperties props;
 
     public Optional<ImageCluster> match(Image img, ClusteringContext ctx) {
-        for (Image candidate : ctx.getLshIndex().queryCandidates(img)) {
+        for (Image candidate : ctx.getCandidates(img)) {
             if (candidate.getId().equals(img.getId())) {
                 continue;
             }
 
             int dist = hashService.hammingDistance(img.getPHash(), candidate.getPHash());
             if (dist <= props.getHammingThreshold()) {
-                return Optional.ofNullable(ctx.getImageIdToCluster().get(candidate.getId()));
+                return ctx.getClusterForImage(candidate.getId());
             }
         }
         return Optional.empty();
