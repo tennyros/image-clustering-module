@@ -129,10 +129,7 @@
                 <configuration>
                     <excludes>
                         <exclude>**/ImageClusteringModuleApp.class</exclude>
-                        <exclude>**/config/**</exclude>
                         <exclude>**/entity/**</exclude>
-                        <exclude>**/dto/**</exclude>
-                        <exclude>**/util/**</exclude>
                         <exclude>**/controller/**</exclude>
                     </excludes>
                 </configuration>

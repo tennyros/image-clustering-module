@@ -5,7 +5,7 @@
 ![Java 17](https://img.shields.io/badge/Java-17-blue)
 ![Spring Boot 3.5.4](https://img.shields.io/badge/Spring_Boot-3.5.4-brightgreen)
 
-Модуль для кластеризации схожих изображений по визуальному сходству с использованием perceptual hashing и LSH.
+Модуль для кластеризации изображений по визуальному сходству с использованием perceptual hashing и LSH.
 
 ---
 
@@ -16,7 +16,8 @@
 1. **Java 17+**
 2. **Docker-compose**
 
-### Настройка и запуск в терминале
+### Настройка и запуск в терминале (Linux / macOS / WSL)
+> Если вы используете Windows без WSL, используйте PowerShell и команды `copy` вместо `mv`, `.\mvnw` вместо `./mvnw`
 
 **1. Клонируйте репозиторий:**
 
@@ -28,8 +29,8 @@ cd image-clustering-module
 **2. Подготовьте файлы репозитория:**
 
 ```bash
-# Переименуйте env.sample файлы
-cp .env.sample .env
+# Переименуйте и при необходимости отредактируйте env.sample файл
+mv .env.sample .env
 ```
 
 **3. Запустите PostgreSQL через docker compose:**
